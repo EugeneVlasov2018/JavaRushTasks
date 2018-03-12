@@ -41,7 +41,10 @@ public class Solution {
         while (file.ready()) {
             String s = file.readLine();
             String[] strs = s.split(" ");
-            addMap(strs[0], Double.parseDouble(strs[1]));
+            /*addMap(strs[0], Double.parseDouble(strs[1]));  как вариант, можно обойтись без создания отдельного метода, создав в цикле
+                                                             только доппеременную Double и заюзать немного другой метод*/
+            Double tmp = map.getOrDefault(strs[0],0d);
+            map.put(strs[0],Double.parseDouble(strs[1])+tmp);
         }
 
         file.close();
@@ -54,10 +57,10 @@ public class Solution {
         }
     }
 
-    private static void addMap(String name, Double value) {
+    /*private static void addMap(String name, Double value) {
         if (!map.containsKey(name))
             map.put(name,value);
         else
             map.put(name, map.get(name) + value);
-    }
+    }*/
 }
